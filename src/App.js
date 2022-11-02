@@ -5,6 +5,7 @@ import Home from './Pages/Home/Home/Home';
 import Navbar from './Pages/Shared/Navbar/Navbar';
 import { ToastContainer } from 'react-toastify';
 import Login from './Pages/Login/Login/Login';
+import Register from './Pages/Login/Register/Register';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Navbar/>
       <Routes>
         <Route path='/' element={<Home/>}/>
+        <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login/>} />
       </Routes>
       <ToastContainer />
