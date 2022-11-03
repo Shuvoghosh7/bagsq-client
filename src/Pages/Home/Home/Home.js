@@ -1,5 +1,6 @@
 import React from 'react';
 import Banner from '../Banner/Banner';
+import Benefits from '../Benefits/Benefits';
 import CorporateClient from '../CorporateClient/CorporateClient';
 import CountOurNumbers from '../CountOurNumbers/CountOurNumbers';
 import Faciliteis from '../Faciliteis/Faciliteis';
@@ -13,6 +14,7 @@ const Home = () => {
             <CorporateClient/>
             <Strength/>
             <CountOurNumbers/>
+            <Benefits/>
         </div>
     );
 };
