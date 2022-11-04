@@ -8,6 +8,7 @@ import Login from './Pages/Login/Login/Login';
 import Register from './Pages/Login/Register/Register';
 import RequireAuth from './Pages/Login/RequireAuth/RequireAuth';
 import AddInventory from './Pages/AddInventory/AddInventory';
+import ProductInventory from './ProductInventory/ProductInventory';
 
 function App() {
   return (
@@ -22,6 +23,14 @@ function App() {
           element={
             <RequireAuth>
               <AddInventory />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/inventory/:id"
+          element={
+            <RequireAuth>
+              <ProductInventory />
             </RequireAuth>
           }
         />
