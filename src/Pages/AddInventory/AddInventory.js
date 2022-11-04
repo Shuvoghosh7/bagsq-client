@@ -6,21 +6,24 @@ import { toast } from "react-toastify";
 import auth from "../../fireabase.init";
 import bagsq from "../../Images/BagsQ.png";
 import { Zoom } from "react-reveal";
+import swal from "sweetalert";
 
 const AddInventory = () => {
     const { register, handleSubmit, reset } = useForm();
     const [user] = useAuthState(auth);
     const onSubmit = (data) => {
-        // <-------------------------> posting new inventory <-------------------------> //
-        axios
-            .post("https://bagsqhike.herokuapp.com/addinventory", data)
-            .then((response) => {
-                if (response) {
-                    toast("Inventory Product Added");
-                    reset();
-                }
-            });
-    };
+        fetch('http://localhost:5000/product', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+            .then(res => res.json())
+            .then(data => {
+                swal("Good job!", "Your Product Add Successfully !", "success");
+            })
+    }
     return (
         <Zoom left>
             <div className="px-4">
@@ -37,16 +40,16 @@ const AddInventory = () => {
 
                     <label>Enter Your Email</label>
                     <input
-                        type="email"
+                        type="text"
                         value={user?.email}
                         className="border py-2 px-5 mb-4 rounded-lg"
-                        {...register("email", { required: true })}
+                        {...register("userEmail", { required: true })}
                     />
 
                     <label>Product Name</label>
                     <input
                         className="border py-2 px-5 mb-4 rounded-lg"
-                        {...register("name", { required: true })}
+                        {...register("productName", { required: true })}
                     />
 
                     <label>Description</label>
@@ -57,9 +60,8 @@ const AddInventory = () => {
 
                     <label>Supplier Name</label>
                     <input
-                        value={user?.displayName}
                         className="border py-2 px-5 mb-4 rounded-lg"
-                        {...register("supplier", { required: true })}
+                        {...register("supplierName", { required: true })}
                     />
 
                     <label>Price</label>
@@ -79,7 +81,7 @@ const AddInventory = () => {
                     <label>Image</label>
                     <input
                         className="border py-2 px-5 mb-4 rounded-lg"
-                        {...register("image", { required: true })}
+                        {...register("imageUrl", { required: true })}
                     />
 
                     <div className="flex justify-center">
