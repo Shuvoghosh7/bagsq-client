@@ -12,6 +12,7 @@ const ProductInventory = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [newQuantity, setNewQuantity] = useState(0);
 
+
     //finding  product using id
     useEffect(() => {
         const url = `http://localhost:5000/product/${id}`;
@@ -26,13 +27,44 @@ const ProductInventory = () => {
 
     //
   const handleUpdateStock = (event) => {
-    
+    event.preventDefault();
+    const quantity = event.target.quantity.value;
+    const updatedQuantity = parseInt(newQuantity) + parseInt(quantity);
+    console.log(updatedQuantity)
+    setNewQuantity(updatedQuantity);
+    const url = `http://localhost:5000/product/${id}`;
+    fetch(url, {
+      method: "PATCH",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify( {updatedQuantity} ),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        event.target.reset();
+        console.log(data)
+      });
   };
 
   const handleDelivered = () => {
-    
+    if (newQuantity > 0) {
+      const updatedQuantity = newQuantity - 1;
+      setNewQuantity(updatedQuantity);
+      const url = `http://localhost:5000/product/${id}`;
+      fetch(url, {
+        method: "PATCH",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify({ updatedQuantity }),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          toast("One Item Sold!!");
+        });
+    }
   };
-
   if (isLoading) {
     return <Loading />;
   }
@@ -81,7 +113,7 @@ const ProductInventory = () => {
                             <div className="relative my-4">
                                 <input
                                     type="number"
-                                    name="stock"
+                                    name="quantity"
                                     id="floating_outlined"
                                     className="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer border"
                                     placeholder=" "
