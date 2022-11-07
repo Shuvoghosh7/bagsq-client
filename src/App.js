@@ -9,6 +9,7 @@ import Register from './Pages/Login/Register/Register';
 import RequireAuth from './Pages/Login/RequireAuth/RequireAuth';
 import AddInventory from './Pages/AddInventory/AddInventory';
 import ProductInventory from './ProductInventory/ProductInventory';
+import ManageInventories from './Pages/ManageInventories/ManageInventories';
 
 function App() {
   return (
@@ -31,6 +32,14 @@ function App() {
           element={
             <RequireAuth>
               <ProductInventory />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/manageInventories"
+          element={
+            <RequireAuth>
+              <ManageInventories/>
             </RequireAuth>
           }
         />
