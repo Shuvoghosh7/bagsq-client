@@ -40,7 +40,7 @@ const AddInventory = () => {
 
                     <label>Enter Your Email</label>
                     <input
-                        type="text"
+                        type="email"
                         value={user?.email}
                         className="border py-2 px-5 mb-4 rounded-lg"
                         {...register("userEmail", { required: true })}

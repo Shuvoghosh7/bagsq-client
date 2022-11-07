@@ -23,7 +23,7 @@ const ManageInventories = () => {
         fetch(url)
             .then((res) => res.json())
             .then((data) => {
-                setProducts(data);
+                setProducts(data.data);
                 setIsLoading(false);
                 setIsPageLoading(false);
             });

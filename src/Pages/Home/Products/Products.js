@@ -4,7 +4,7 @@ import Loading from "../../Shared/Loading/Loading";
 import ProductCard from "../ProductCard/ProductCard";
 const Products = () => {
     const [products, setProducts] = useState([]);
-    const limitedProducts = products.slice(0, 6);
+    // const limitedProducts = products?.slice(0, 6);
     
   const [isLoading, setIsLoading] = useState(true);
     useEffect(()=>{
@@ -12,7 +12,7 @@ const Products = () => {
         fetch(url)
           .then((res) => res.json())
           .then((data) => {
-            setProducts(data);
+            setProducts(data.data);
             setIsLoading(false);
           });
     },[products]);
