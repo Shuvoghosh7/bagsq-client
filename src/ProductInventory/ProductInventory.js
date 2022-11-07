@@ -5,6 +5,7 @@ import { Link, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import { Zoom } from "react-reveal";
 import Loading from "../Pages/Shared/Loading/Loading";
+import swal from "sweetalert";
 
 const ProductInventory = () => {
     const { id } = useParams();
@@ -61,7 +62,7 @@ const ProductInventory = () => {
       })
         .then((res) => res.json())
         .then((data) => {
-          toast("One Item Sold!!");
+            swal("Good job!", "Your Product update Successfully !", "success");
         });
     }
   };
