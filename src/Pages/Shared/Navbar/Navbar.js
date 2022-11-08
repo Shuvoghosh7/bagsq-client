@@ -74,14 +74,7 @@ const Navbar = () => {
                 </>
               )}
               <ul className="py-1" aria-labelledby="dropdown">
-                <li>
-                  <CustomLink
-                    to="/dashboard"
-                    className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-                  >
-                    Dashboard
-                  </CustomLink>
-                </li>
+                
                 {user ? (
                   <li>
                     <CustomLink

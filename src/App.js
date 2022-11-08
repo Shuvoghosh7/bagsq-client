@@ -11,6 +11,7 @@ import AddInventory from './Pages/AddInventory/AddInventory';
 import ProductInventory from './ProductInventory/ProductInventory';
 import ManageInventories from './Pages/ManageInventories/ManageInventories';
 import MyItem from './Pages/MyItem/MyItem';
+import Footer from './Pages/Shared/Footer/Footer';
 
 function App() {
   return (
@@ -54,6 +55,7 @@ function App() {
         />
 
       </Routes>
+      <Footer/>
       <ToastContainer />
     </div>
   );
