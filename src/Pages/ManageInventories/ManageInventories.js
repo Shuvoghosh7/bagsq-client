@@ -11,24 +11,10 @@ import { toast } from "react-toastify";
 import TableRow from "./TableRow";
 import { Zoom } from "react-reveal";
 import Loading from "../Shared/Loading/Loading";
-
+import { useQuery } from 'react-query';
 const ManageInventories = () => {
-    const [products, setProducts] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
-    const [isPageLoading, setIsPageLoading] = useState(true);
-
-    useEffect(() => {
-        setIsPageLoading(true);
-        const url = `https://bagsq.onrender.com/product`;
-        fetch(url)
-            .then((res) => res.json())
-            .then((data) => {
-                setProducts(data.data);
-                setIsLoading(false);
-                setIsPageLoading(false);
-            });
-    }, []);
-
+    const { data:products , isLoading, refetch } = useQuery('products', () => fetch('https://bagsq.onrender.com/product').then(res => res.json()))
+   
     if (isLoading) {
         return <Loading />;
     }
@@ -56,6 +42,7 @@ const ManageInventories = () => {
                                     key={product._id}
                                     product={product}
                                     index={index}
+                                    refetch={refetch}
                                 />
                             )
                         }
