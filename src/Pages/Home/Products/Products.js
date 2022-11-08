@@ -8,7 +8,7 @@ const Products = () => {
 
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
-    const url = `http://localhost:5000/product`;
+    const url = `https://bagsq.onrender.com/product/product`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
