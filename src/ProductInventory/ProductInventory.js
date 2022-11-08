@@ -16,7 +16,7 @@ const ProductInventory = () => {
 
     //finding  product using id
     useEffect(() => {
-        const url = `http://localhost:5000/product/${id}`;
+        const url = `https://bagsq.onrender.com/product/${id}`;
         fetch(url)
             .then((res) => res.json())
             .then((data) => {
@@ -27,48 +27,48 @@ const ProductInventory = () => {
     }, [id]);
 
     //
-  const handleUpdateStock = (event) => {
-    event.preventDefault();
-    const quantity = event.target.quantity.value;
-    const updatedQuantity = parseInt(newQuantity) + parseInt(quantity);
-    console.log(updatedQuantity)
-    setNewQuantity(updatedQuantity);
-    const url = `http://localhost:5000/product/${id}`;
-    fetch(url, {
-      method: "PATCH",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify( {updatedQuantity} ),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        event.target.reset();
-        console.log(data)
-      });
-  };
+    const handleUpdateStock = (event) => {
+        event.preventDefault();
+        const quantity = event.target.quantity.value;
+        const updatedQuantity = parseInt(newQuantity) + parseInt(quantity);
+        console.log(updatedQuantity)
+        setNewQuantity(updatedQuantity);
+        const url = `https://bagsq.onrender.com/product/${id}`;
+        fetch(url, {
+            method: "PATCH",
+            headers: {
+                "Content-type": "application/json",
+            },
+            body: JSON.stringify({ updatedQuantity }),
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                event.target.reset();
+                console.log(data)
+            });
+    };
 
-  const handleDelivered = () => {
-    if (newQuantity > 0) {
-      const updatedQuantity = newQuantity - 1;
-      setNewQuantity(updatedQuantity);
-      const url = `http://localhost:5000/product/${id}`;
-      fetch(url, {
-        method: "PATCH",
-        headers: {
-          "Content-type": "application/json",
-        },
-        body: JSON.stringify({ updatedQuantity }),
-      })
-        .then((res) => res.json())
-        .then((data) => {
-            swal("Good job!", "Your Product update Successfully !", "success");
-        });
+    const handleDelivered = () => {
+        if (newQuantity > 0) {
+            const updatedQuantity = newQuantity - 1;
+            setNewQuantity(updatedQuantity);
+            const url = `https://bagsq.onrender.com/product/${id}`;
+            fetch(url, {
+                method: "PATCH",
+                headers: {
+                    "Content-type": "application/json",
+                },
+                body: JSON.stringify({ updatedQuantity }),
+            })
+                .then((res) => res.json())
+                .then((data) => {
+                    swal("Good job!", "Your Product update Successfully !", "success");
+                });
+        }
+    };
+    if (isLoading) {
+        return <Loading />;
     }
-  };
-  if (isLoading) {
-    return <Loading />;
-  }
     return (
         <Zoom left>
             <div className="lg:flex justify-center items-center mt-10 mb-40 px-4">

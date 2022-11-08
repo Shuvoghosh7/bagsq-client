@@ -19,7 +19,7 @@ const ManageInventories = () => {
 
     useEffect(() => {
         setIsPageLoading(true);
-        const url = `http://localhost:5000/product`;
+        const url = `https://bagsq.onrender.com/product`;
         fetch(url)
             .then((res) => res.json())
             .then((data) => {

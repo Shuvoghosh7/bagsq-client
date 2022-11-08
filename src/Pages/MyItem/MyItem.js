@@ -15,7 +15,7 @@ const MyItem = () => {
     const [MyProducts, setMyProducts] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     useEffect(() => {
-        const url = `http://localhost:5000/product?userEmail=${user?.email}`;
+        const url = `https://bagsq.onrender.com/product?userEmail=${user?.email}`;
         fetch(url)
             .then((res) => res.json())
             .then((data) => {

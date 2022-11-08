@@ -12,7 +12,7 @@ const AddInventory = () => {
     const { register, handleSubmit, reset } = useForm();
     const [user] = useAuthState(auth);
     const onSubmit = (data) => {
-        fetch('http://localhost:5000/product', {
+        fetch('https://bagsq.onrender.com/product', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

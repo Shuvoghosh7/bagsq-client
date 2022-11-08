@@ -3,24 +3,24 @@ import { Link } from "react-router-dom";
 import Loading from "../../Shared/Loading/Loading";
 import ProductCard from "../ProductCard/ProductCard";
 const Products = () => {
-    const [products, setProducts] = useState([]);
-    // const limitedProducts = products?.slice(0, 6);
-    
+  const [products, setProducts] = useState([]);
+  // const limitedProducts = products?.slice(0, 6);
+
   const [isLoading, setIsLoading] = useState(true);
-    useEffect(()=>{
-        const url = `http://localhost:5000/product`;
-        fetch(url)
-          .then((res) => res.json())
-          .then((data) => {
-            setProducts(data.data);
-            setIsLoading(false);
-          });
-    },[products]);
-    if (isLoading) {
-        return <Loading />;
-      }
-    return (
-        <div className="py-14 flex flex-col justify-center min-h-screen">
+  useEffect(() => {
+    const url = `https://bagsq.onrender.com/product`;
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => {
+        setProducts(data.data);
+        setIsLoading(false);
+      });
+  }, [products]);
+  if (isLoading) {
+    return <Loading />;
+  }
+  return (
+    <div className="py-14 flex flex-col justify-center min-h-screen">
       <div className="text-center mt-10">
         <span className="text-center text-2xl font-bold">Products </span>
         <span className="text-center text-2xl font-bold text-blue-400">
@@ -41,7 +41,7 @@ const Products = () => {
         Manage Inventories
       </Link>
     </div>
-    );
+  );
 };
 
 export default Products;
