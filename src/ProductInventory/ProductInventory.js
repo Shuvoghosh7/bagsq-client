@@ -44,7 +44,7 @@ const ProductInventory = () => {
             .then((res) => res.json())
             .then((data) => {
                 event.target.reset();
-                console.log(data)
+                swal("Good job!", "Your Product update Successfully !", "success");
             });
     };
 

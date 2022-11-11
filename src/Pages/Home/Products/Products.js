@@ -4,9 +4,6 @@ import Loading from "../../Shared/Loading/Loading";
 import ProductCard from "../ProductCard/ProductCard";
 const Products = () => {
   const [products, setProducts] = useState([]);
-  console.log(products)
-  // const limitedProducts = products?.slice(0, 6);
-
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     const url = `https://bagsq.onrender.com/product`;
