@@ -3,7 +3,6 @@
   }
   .companies img {
     cursor: text;
-    border: 0.1px solid rgb(213, 213, 213);
     cursor: grab;
   }
   .companies img:hover {

@@ -4,18 +4,19 @@ import Loading from "../../Shared/Loading/Loading";
 import ProductCard from "../ProductCard/ProductCard";
 const Products = () => {
   const [products, setProducts] = useState([]);
+  console.log(products)
   // const limitedProducts = products?.slice(0, 6);
 
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
-    const url = `https://bagsq.onrender.com/product/product`;
+    const url = `https://bagsq.onrender.com/product`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
         setProducts(data);
         setIsLoading(false);
       });
-  }, [products]);
+  }, []);
   if (isLoading) {
     return <Loading />;
   }
@@ -30,7 +31,7 @@ const Products = () => {
 
       {/* <------------------------->mapping all products<-------------------------> */}
       <div className="container mx-auto grid grid-cols-1 lg:grid-cols-3 gap-5 px-5 lg:px-28 pt-5">
-        {products?.slice(0, 6).map((product) => (
+        {products.slice(0,6).map((product) => (
           <ProductCard key={product._id} product={product} />
         ))}
       </div>
